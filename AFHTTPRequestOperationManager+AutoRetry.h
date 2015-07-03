@@ -7,6 +7,8 @@
 #pragma clang diagnostic push
 #pragma ide diagnostic ignored "OCUnusedMethodInspection"
 
+#define INCREASE_TIMEOUT_RATIO 1.5
+
 typedef int (^RetryDelayCalcBlock)(int, int, int); // int totalRetriesAllowed, int retriesRemaining, int delayBetweenIntervalsModifier
 
 @interface AFHTTPRequestOperationManager (AutoRetry)
