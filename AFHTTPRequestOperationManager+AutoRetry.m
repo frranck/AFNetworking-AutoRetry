@@ -38,7 +38,7 @@ SYNTHESIZE_ASC_OBJ(__retryDelayCalcBlock, setRetryDelayCalcBlock);
     return self.__operationsDict;
 }
 
-- (AFHTTPRequestOperation *)HTTPRequestOperationWithRequest:(NSURLRequest *)request
+- (AFHTTPRequestOperation *)HTTPRequestOperationWithRequest:(NSMutableURLRequest *)request
                                                     success:(void (^)(AFHTTPRequestOperation *operation, id responseObject))success
                                                     failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
                                                 autoRetryOf:(int)retriesRemaining retryInterval:(int)intervalInSeconds {
@@ -61,8 +61,7 @@ SYNTHESIZE_ASC_OBJ(__retryDelayCalcBlock, setRetryDelayCalcBlock);
             RetryDelayCalcBlock delayCalc = self.retryDelayCalcBlock;
             
             if ([request isKindOfClass:[NSMutableURLRequest class]]) {
-             //   NSMutableURLRequest * request2=(NSMutableURLRequest * ) request;
-                request.timeoutInterval=request.timeoutInterval*1.5;
+                request.timeoutInterval=request.timeoutInterval*INCREASE_TIMEOUT_RATIO;
                 NSLog(@"AutoRetry: increasing time to %f seconds...", request.timeoutInterval);
             } else {
                 NSLog(@"AutoRetry: not increasing timeout");
