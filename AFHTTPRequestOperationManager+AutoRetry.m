@@ -61,9 +61,9 @@ SYNTHESIZE_ASC_OBJ(__retryDelayCalcBlock, setRetryDelayCalcBlock);
             RetryDelayCalcBlock delayCalc = self.retryDelayCalcBlock;
             
             if ([request isKindOfClass:[NSMutableURLRequest class]]) {
-                NSMutableURLRequest * request2=(NSMutableURLRequest * ) request;
-                request2.timeoutInterval=request2.timeoutInterval*1.5;
-                NSLog(@"AutoRetry: increasing time to %f seconds...", request2.timeoutInterval);
+             //   NSMutableURLRequest * request2=(NSMutableURLRequest * ) request;
+                request.timeoutInterval=request.timeoutInterval*1.5;
+                NSLog(@"AutoRetry: increasing time to %f seconds...", request.timeoutInterval);
             } else {
                 NSLog(@"AutoRetry: not increasing timeout");
             }
