@@ -78,7 +78,7 @@ SYNTHESIZE_ASC_OBJ(__retryDelayCalcBlock, setRetryDelayCalcBlock);
                 addRetryOperation();
             }
         } else {
-            NSLog(@"AutoRetry: Request failed %d times: %@", originalRetryCount, error.localizedDescription);
+            NSLog(@"AutoRetry: Request %@ failed %d times: %@",request, originalRetryCount, error.localizedDescription);
             NSLog(@"AutoRetry: No more retries allowed! executing supplied failure block...");
             failure(operation, error);
             NSLog(@"AutoRetry: done.");
